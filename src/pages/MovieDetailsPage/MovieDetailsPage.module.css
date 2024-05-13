@@ -1,0 +1,43 @@
+
+.film {
+  display: flex;
+  margin: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.film img {
+  width: 300px;
+  height: 450px;
+  object-fit: cover; 
+}
+
+.film div {
+  padding: 20px;
+}
+
+.film h2, .film h3 {
+  color: #333;
+}
+
+.overview {
+  margin-top: 10px;
+  color: #666;
+}
+
+.genres {
+  margin-top: 5px;
+  font-style: italic;
+}
+.link{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  margin-left: 100px;
+  font-size: 18px;
+}
+.titleLink{
+margin-left: 40px;
+}

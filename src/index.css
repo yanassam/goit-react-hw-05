@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,7 +25,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -33,6 +34,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #535bf2;
 }
 
 button {
@@ -65,4 +67,11 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} 
+ul {
+  list-style-type: none; 
 }
+
+/* li {
+  text-decoration: none; 
+} */

@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import s from "./MovieList.module.css";
 
-const MovieList = () => {
+const MovieList = ({ data }) => {
   return (
     <div>
-      <Link to="/movies/123">123</Link>
-      <Link to="/movies/555">555</Link>
-      <Link to="/movies/777">777</Link>
-      <Link to="/movies/888">888</Link>
+      <ul className={s.list}>
+        {data.map((film) => (
+          <li className={s.list} key={film.id}>
+            <Link to={`/movies/${film.id.toString()}`}>{film.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
