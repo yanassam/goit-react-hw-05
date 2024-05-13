@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Outlet, useParams, Link, useLocation } from "react-router-dom";
+import { Outlet, useParams, NavLink, useLocation } from "react-router-dom";
 import { fetchFilmById } from "../../service/serviceAPI";
 import s from "./MovieDetailsPage.module.css";
 
-// import MovieCast from "../../components/MovieCast/MovieCast";
-
 const MovieDetailsPage = () => {
   const location = useLocation();
-  // const goBackRef = useRef(location.state);
-
-  const backLinkHref = location.state ?? "/";
+  const goBackRef = useRef(location.state?.from ?? "/");
 
   const { movieId } = useParams();
 
@@ -27,7 +23,9 @@ const MovieDetailsPage = () => {
   if (!movie) return <h1>loarding</h1>;
   return (
     <div>
-      <Link to={backLinkHref}>go back</Link>
+      <NavLink to={goBackRef.current} className={s.backLink}>
+        go back
+      </NavLink>
       <div className={s.film}>
         <div>
           {
@@ -58,8 +56,18 @@ const MovieDetailsPage = () => {
       </div>
       <h3 className={s.titleLink}>Additional informaion</h3>
       <div className={s.link}>
-        <Link to="cast">cast</Link>
-        <Link to="reviews">reviews</Link>
+        <NavLink
+          to="cast"
+          className={({ isActive }) => (isActive ? s.activeLink : "")}
+        >
+          Cast
+        </NavLink>
+        <NavLink
+          to="reviews"
+          className={({ isActive }) => (isActive ? s.activeLink : "")}
+        >
+          Reviews
+        </NavLink>
       </div>
       <Outlet />
     </div>

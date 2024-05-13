@@ -2,18 +2,21 @@ import s from "./MoviesPage.module.css";
 import { useEffect, useState } from "react";
 import { fetchSearchFilm } from "../../service/serviceAPI";
 import MovieList from "../../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const [searchMovie, setSearchMovie] = useState("");
+  // const [searchMovie, setSearchMovie] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentSearch = searchParams.get("query") || "";
   const [films, setFilms] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!searchMovie) return;
-
+    // if (!searchMovie) return;
+    if (!currentSearch) return;
     const fetchData = async () => {
       try {
-        const data = await fetchSearchFilm(searchMovie);
+        const data = await fetchSearchFilm(currentSearch);
 
         setFilms(data || []);
       } catch (error) {
@@ -22,7 +25,7 @@ const MoviesPage = () => {
       }
     };
     fetchData();
-  }, [searchMovie]);
+  }, [currentSearch]);
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
@@ -33,7 +36,7 @@ const MoviesPage = () => {
       return;
     }
     setError("");
-    setSearchMovie(searchFilm);
+    setSearchParams({ query: searchFilm });
     form.reset();
   };
 
