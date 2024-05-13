@@ -10,7 +10,7 @@ const MovieDetailsPage = () => {
   // const goBackRef = useRef(location.state);
 
   const backLinkHref = location.state ?? "/";
-  console.log(location.state);
+
   const { movieId } = useParams();
 
   const [movie, setMovie] = useState(null);
